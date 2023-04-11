@@ -1,48 +1,48 @@
 export const ADMIN_SETTINGS = {
   logo: 'iconhd.png',
-  firstGroupOfSidebar: 299,
+  firstGroupOfSidebar: '64351d05f5f71ec10b636172',
   topNav: [
     {
       iconId: 1,
       text: 'Thông tin hay',
       subNav: [
         {
-          link: "#",
+          link: '#',
           text: 'Tin mới',
         },
         {
-          link: "#",
+          link: '#',
           text: 'Khuyến mãi',
         },
         {
-          link: "#",
+          link: '#',
           text: 'Điện máy - Gia dụng',
         },
         {
-          link: "#",
+          link: '#',
           text: 'Thủ thuật',
         },
         {
-          link: "#",
+          link: '#',
           text: 'For Gamers',
         },
         {
-          link: "#",
+          link: '#',
           text: 'Video hot',
         },
         {
-          link: "#",
+          link: '#',
           text: 'Đánh giá - tư vấn',
         },
         {
-          link: "#",
+          link: '#',
           text: 'App & Game',
         },
         {
-          link: "#",
+          link: '#',
           text: 'Sự kiện',
         },
-      ]
+      ],
     },
     {
       iconId: 2,
@@ -53,7 +53,6 @@ export const ADMIN_SETTINGS = {
       iconId: 3,
       text: 'Tài khoản của tôi',
       subNav: [],
-
     },
     {
       iconId: 4,
@@ -125,14 +124,5 @@ export const ADMIN_SETTINGS = {
       iconId: 14,
       link: '#',
     },
-  ]
-}
-
-
-
-
-
-
-
-
-
+  ],
+};

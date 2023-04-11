@@ -1,14 +1,12 @@
-import { memo } from "react"
+import { memo } from 'react';
 
-import MainSidebarGroup from "./MainSidebarGroup"
-import '../../../asset/css/main-sidebar.css'
-import MainSidebarGroupFirst from "./MainSidebarGroupFirst"
-
-
+import MainSidebarGroup from './MainSidebarGroup';
+import '../../../asset/css/main-sidebar.css';
+import MainSidebarGroupFirst from './MainSidebarGroupFirst';
 
 function MainSidebar({ parentCategory, attributeItems, onClick }) {
-  const handleCheckItem = onClick
-
+  const handleCheckItem = onClick;
+  console.log('MainSidebar --->attributeItems ', attributeItems);
   return (
     <div className="l-3">
       <div className="main-sidebar">
@@ -19,17 +17,18 @@ function MainSidebar({ parentCategory, attributeItems, onClick }) {
         />
 
         {attributeItems.map((e, id) => {
-          return <MainSidebarGroup
-            attributeItem={e}
-            onClick={handleCheckItem}
-            key={id}
-            categoryOrder={id}
-          />
+          return (
+            <MainSidebarGroup
+              attributeItem={e}
+              onClick={handleCheckItem}
+              key={id}
+              categoryOrder={id}
+            />
+          );
         })}
       </div>
     </div>
-  )
+  );
 }
 
-
-export default MainSidebar = memo(MainSidebar)
+export default MainSidebar = memo(MainSidebar);

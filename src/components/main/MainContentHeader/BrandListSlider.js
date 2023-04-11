@@ -1,11 +1,13 @@
-import { memo } from "react"
+import { memo, useContext } from 'react';
 
-import { DATA } from "../../../asset/data/data"
-import { IMG_BRAND_SLIDE_URL } from "../../../config/globalConfigs"
-
-const brandList = DATA.navFilter.listCategory.filter(e => e.parentID === 299)
+import { IMG_BRAND_SLIDE_URL } from '../../../config/globalConfigs';
+import { FilterContext } from '../Main';
 
 function BrandListSlider() {
+  const DATA = useContext(FilterContext);
+  const brandList = DATA.navFilter.listCategory.filter(
+    (e) => e.parentID === 299
+  );
 
   return (
     <div className="main-content-wrap brand-list">
@@ -16,11 +18,7 @@ function BrandListSlider() {
       <div className="brand-list-slider flex ali-center">
         <div className="flex-nowrap">
           {brandList.map((brand, i) => (
-            <a
-              href="#"
-              key={i}
-              style={{ order: brand.order }}
-            >
+            <a href="#" key={i} style={{ order: brand.order }}>
               <img src={`${IMG_BRAND_SLIDE_URL}${brand.imageCateUrl}`} alt="" />
             </a>
           ))}
@@ -37,8 +35,7 @@ function BrandListSlider() {
         </div>
       </div>
     </div>
-
-  )
+  );
 }
 
-export default BrandListSlider = memo(BrandListSlider)
+export default BrandListSlider = memo(BrandListSlider);
