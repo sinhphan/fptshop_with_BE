@@ -111,7 +111,6 @@ function Main() {
 
   useMemo(() => {
     if (!dataLoading) {
-      console.log('Main---> filterProduct', filterProduct);
       //  for first group of main sidebar
       parentCategory = filterProduct?.navFilter?.listCategory.filter(
         (e) => e._id == ADMIN_SETTINGS.firstGroupOfSidebar
@@ -124,14 +123,9 @@ function Main() {
         });
       setAttributeItems(attributeItems);
 
-      console.log('Main---> parentCategory', parentCategory);
-      console.log('Main---> attributeItems', attributeItems);
-
       initCheckedItems = createInitCheckedItems(parentCategory, attributeItems);
 
       setCheckedItems(initCheckedItems);
-
-      console.log('Main---> initCheckedItems', initCheckedItems);
     }
   }, [dataLoading]);
 

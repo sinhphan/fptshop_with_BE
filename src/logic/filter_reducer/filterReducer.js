@@ -27,12 +27,21 @@ function filterReducer(state, action) {
             : filterByPrice(e.searchKey);
       });
       for (let key of Object.keys(queries)) {
-        query = query ? query + '&' + queries[key] : queries[key];
+        query = query
+          ? query + '&' + key + '=' + queries[key]
+          : key + '=' + queries[key];
       }
-      fetch(`http://localhost:3001/product?${query}`).then(async (res) => {
-        console.log(await res.json);
-      });
+      let url = `http://localhost:3001/product?${query}`;
+      console.log(url);
+
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+
       return state;
+
     case ACTIONS.BEST_SELLING_FILTER_ACTION:
       state.listDefault.list.sort(
         (a, b) =>

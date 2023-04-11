@@ -11,8 +11,6 @@ function MainContentFilteredList() {
   let checkedItems = useContext(CheckedItemsContext);
   let setCheckedItems = useContext(SetCheckedItemsContext);
 
-  console.log('MainContentFilteredList --> filteredProducts', filteredProducts);
-
   let productQuantity = filteredProducts.listDefault.list.length;
   let isBrandCategory = (checkedItem) =>
     checkedItem.id !== -1 && checkedItem.parentOrder === -1;
