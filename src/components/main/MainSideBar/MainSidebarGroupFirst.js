@@ -1,16 +1,22 @@
-import { memo, useContext } from "react"
-import { ADMIN_SETTINGS } from "../../../config/adminSettings"
-import { CheckedItemsContext, FilterContext } from "../Main"
+import { memo, useContext } from 'react';
+import { ADMIN_SETTINGS } from '../../../config/adminSettings';
+import { CheckedItemsContext, FilterContext } from '../Main';
 
 function MainSidebarGroupFirst({ onClick, parentCategory, order }) {
-  const data = useContext(FilterContext)
-  const checkedItems = useContext(CheckedItemsContext)
-  const items = data.navFilter.listCategory.filter(e => e.parentID == ADMIN_SETTINGS.firstGroupOfSidebar)
+  const data = useContext(FilterContext);
+  const checkedItems = useContext(CheckedItemsContext);
+  const items = data.navFilter.listCategory.filter(
+    (e) => e.parentID == ADMIN_SETTINGS.firstGroupOfSidebar
+  );
 
-  let isAllChecked = checkedItem => checkedItem.id === -1 && checkedItem.parentName === parentCategory[0].nameAscii
-  const allCheckedCssClass = checkedItems.find(isAllChecked) ? "c-6 checkbox active" : "c-6 checkbox"
+  let isAllChecked = (checkedItem) =>
+    checkedItem.id === -1 &&
+    checkedItem.parentName === parentCategory[0].nameAscii;
+  const allCheckedCssClass = checkedItems.find(isAllChecked)
+    ? 'c-6 checkbox active'
+    : 'c-6 checkbox';
 
-  const handleCheckItem = onClick
+  const handleCheckItem = onClick;
 
   return (
     <div className="main-sidebar-group">
@@ -23,22 +29,24 @@ function MainSidebarGroupFirst({ onClick, parentCategory, order }) {
         <div
           className={allCheckedCssClass}
           style={{ order: -100 }}
-          data-id='-1'
-          data-name=''
-          data-search-key=''
-          data-search-category=''
+          data-id="-1"
+          data-name=""
+          data-search-key=""
+          data-search-category=""
           onClick={handleCheckItem}
         >
-
           <i className="iconcate-checkbox"></i>
           Tất Cả
         </div>
 
         {items.map((item, i) => {
-          let isChecked = checkedItem => checkedItem.id === i &&
-            checkedItem.parentName === parentCategory[0].nameAscii
-          let checked = checkedItems.find(isChecked)
-          let itemCheckedCssClass = checked ? "c-6 checkbox active flex" : "c-6 checkbox flex"
+          let isChecked = (checkedItem) =>
+            checkedItem.id === i &&
+            checkedItem.parentName === parentCategory[0].nameAscii;
+          let checked = checkedItems.find(isChecked);
+          let itemCheckedCssClass = checked
+            ? 'c-6 checkbox active flex'
+            : 'c-6 checkbox flex';
 
           return (
             <div
@@ -47,18 +55,18 @@ function MainSidebarGroupFirst({ onClick, parentCategory, order }) {
               style={{ order: item.order }}
               data-id={i}
               data-name={item.name}
-              data-search-key={item.name}
+              data-search-key={item.nameAscii}
               data-search-category={parentCategory[0].nameAscii}
               onClick={handleCheckItem}
             >
               <i className="iconcate-checkbox"></i>
               <p>{item.name}</p>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }
 
-export default MainSidebarGroupFirst = memo(MainSidebarGroupFirst)
+export default MainSidebarGroupFirst = memo(MainSidebarGroupFirst);

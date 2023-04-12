@@ -6,7 +6,7 @@ import {
   SetCheckedItemsContext,
 } from '../Main';
 
-function MainContentFilteredList() {
+function MainContentFilteredList({ parentCategory, attributeItems }) {
   let filteredProducts = useContext(FilterContext);
   let checkedItems = useContext(CheckedItemsContext);
   let setCheckedItems = useContext(SetCheckedItemsContext);
@@ -32,7 +32,10 @@ function MainContentFilteredList() {
 
   const handleDeleteFilter = (e) => {
     let listDataset = e.currentTarget.dataset;
-    let initCheckedItems = createInitCheckedItems();
+    let initCheckedItems = createInitCheckedItems(
+      parentCategory,
+      attributeItems
+    );
 
     if (listDataset.type === 'all') {
       setCheckedItems(initCheckedItems);

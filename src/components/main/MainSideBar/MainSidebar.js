@@ -6,7 +6,6 @@ import MainSidebarGroupFirst from './MainSidebarGroupFirst';
 
 function MainSidebar({ parentCategory, attributeItems, onClick }) {
   const handleCheckItem = onClick;
-  console.log('MainSidebar --->attributeItems ', attributeItems);
   return (
     <div className="l-3">
       <div className="main-sidebar">

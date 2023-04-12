@@ -19,6 +19,7 @@ import BreadCrum from './MainContentHeader/BreadCrum';
 import MainContent from './MainContentHeader/MainContent';
 import MainSidebar from './MainSideBar/MainSidebar';
 import MainSlider from './MainContentHeader/MainSlider';
+import { checkedItemsParse } from '../../logic/checkItemsParse';
 
 export const FilterContext = createContext(null);
 export const FilterDispatchContext = createContext(null);
@@ -129,11 +130,21 @@ function Main() {
     }
   }, [dataLoading]);
 
-  useEffect(() => dispatchFilter(filterAction(checkedItems)), [checkedItems]);
+  useEffect(() => {
+    const url = checkedItemsParse(checkedItems);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        data.page = 1;
+        data.url = url;
+        dispatchFilter(filterAction(data));
+      });
+  }, [checkedItems]);
   useEffect(() => {
     fetch('http://localhost:3001/product')
       .then((res) => res.json())
       .then((data) => {
+        data.page = 1;
         dispatchFilter(initDataAction(data));
         setDataLoading(false);
       });
@@ -157,7 +168,10 @@ function Main() {
                         onClick={handleCheckItem}
                       />
                     )}
-                    <MainContent />
+                    <MainContent
+                      parentCategory={parentCategory}
+                      attributeItems={attributeItems}
+                    />
                   </div>
                 </div>
               </div>
