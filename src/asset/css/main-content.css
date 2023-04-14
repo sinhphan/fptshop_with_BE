@@ -182,7 +182,7 @@
 
 .product-filter-display select {
   font-size: 1.6rem;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   border: 1px solid var(--gray-3);
   outline: none;
   padding: 6px 25px 6px 8px;
@@ -235,14 +235,13 @@
 }
 
 .product-list .l-4 {
-  min-height: 570px;
+  min-height: 600px;
 }
 
 .product {
   border: 1px solid #fff;
   padding: 15px;
   position: relative;
-  min-height: 570px;
   width: 100%;
   background-color: #fff;
 }
@@ -526,7 +525,7 @@
 }
 
 .checkbox.active .iconcate-checkbox:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 5px;
@@ -578,7 +577,7 @@ i {
 
 .click-dropdown button:after,
 .click-dropdown button:before {
-  content: '';
+  content: "";
   position: absolute;
   right: 10px;
   -webkit-transform: translateY(-50%);
