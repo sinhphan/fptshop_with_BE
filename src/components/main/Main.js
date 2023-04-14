@@ -7,16 +7,17 @@ import {
   useCallback,
   useRef,
   useMemo,
-} from 'react';
-import { ADMIN_SETTINGS } from '../../config/adminSettings';
-import { createInitCheckedItems } from '../../config/createInitCheckedItems';
-import { initDataAction } from '../../logic/filter_reducer/actions';
-import filterReducer from '../../logic/filter_reducer/filterReducer';
-import BreadCrum from './MainContentHeader/BreadCrum';
-import MainContent from './MainContentHeader/MainContent';
-import MainSidebar from './MainSideBar/MainSidebar';
-import MainSlider from './MainContentHeader/MainSlider';
-import { checkedItemsParse } from '../../logic/checkItemsParse';
+} from "react";
+import { ADMIN_SETTINGS } from "../../config/adminSettings";
+import { createInitCheckedItems } from "../../config/createInitCheckedItems";
+import { initDataAction } from "../../logic/filter_reducer/actions";
+import filterReducer from "../../logic/filter_reducer/filterReducer";
+import BreadCrum from "./MainContentHeader/BreadCrum";
+import MainContent from "./MainContentHeader/MainContent";
+import MainSidebar from "./MainSideBar/MainSidebar";
+import MainSlider from "./MainContentHeader/MainSlider";
+import { checkedItemsParse } from "../../logic/checkItemsParse";
+import { DOMAIN } from "../../config/globalConfigs";
 
 export const FilterContext = createContext(null);
 export const FilterDispatchContext = createContext(null);
@@ -35,7 +36,7 @@ function Main() {
 
   const handleCheckItem = useCallback(
     (e) => {
-      window.scrollTo({ top: 440, behavior: 'smooth' });
+      window.scrollTo({ top: 440, behavior: "smooth" });
       const currentChecked = {
         id: +e.currentTarget.dataset.id,
         parentName: e.currentTarget.parentNode.dataset.query,
@@ -78,8 +79,8 @@ function Main() {
           let initCheckedInThisCategory = {
             id: -1,
             parentName: currentChecked.parentName,
-            searchKey: '',
-            name: '',
+            searchKey: "",
+            name: "",
             parentOrder: currentChecked.parentOrder,
           };
 
@@ -129,7 +130,6 @@ function Main() {
 
   useEffect(() => {
     const url = checkedItemsParse(checkedItems);
-    console.log('Main ---> url:', url);
 
     fetch(url)
       .then((res) => res.json())
@@ -140,7 +140,7 @@ function Main() {
       });
   }, [checkedItems]);
   useEffect(() => {
-    fetch('http://localhost:3001/product')
+    fetch(`${DOMAIN}product`)
       .then((res) => res.json())
       .then((data) => {
         data.page = 1;
