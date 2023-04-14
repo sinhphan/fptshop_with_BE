@@ -8,31 +8,26 @@ const listFilterProps = [
     name: 'Bán chạy nhất',
     query: 'sort',
     queryValue: 'best_sell',
-    action: actions.bestSellingFilterAction,
   },
   {
     name: 'Trả góp 0%',
     query: 'zero',
     queryValue: 'Trả góp 0%',
-    action: actions.zeroPercentPaymentFilterAction,
   },
   {
     name: 'Giá thấp',
     query: 'sort',
     queryValue: 'low_price',
-    action: actions.lowPriceFilterAction,
   },
   {
     name: 'Giá cao',
     query: 'sort',
     queryValue: 'hight_price',
-    action: actions.highPriceFilterAction,
   },
   {
     name: 'Ưu đãi online',
     queryValue: 'best_sell',
     query: 'sort',
-    action: actions.onlineOfferFilterAction,
   },
 ];
 
@@ -61,7 +56,7 @@ function ProductsFilterNavigation({
       .then((fetchedData) => {
         fetchedData.url = data.url;
         fetchedData.page = 1;
-        filterDispatch(listFilterProps[id].action(fetchedData));
+        filterDispatch(actions.initDataAction(fetchedData));
       });
   };
 

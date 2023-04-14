@@ -1,6 +1,6 @@
 import { memo, useContext, useState } from 'react';
 import { FilterContext, FilterDispatchContext } from '../Main';
-import { filterAction } from '../../../logic/filter_reducer/actions';
+import { initDataAction } from '../../../logic/filter_reducer/actions';
 
 function ViewMoreButton() {
   const data = useContext(FilterContext);
@@ -31,7 +31,7 @@ function ViewMoreButton() {
             ],
           };
 
-          filterDispatch(filterAction(newData));
+          filterDispatch(initDataAction(newData));
         } else {
           setNoMore(true);
         }

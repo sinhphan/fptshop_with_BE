@@ -10,10 +10,7 @@ import {
 } from 'react';
 import { ADMIN_SETTINGS } from '../../config/adminSettings';
 import { createInitCheckedItems } from '../../config/createInitCheckedItems';
-import {
-  filterAction,
-  initDataAction,
-} from '../../logic/filter_reducer/actions';
+import { initDataAction } from '../../logic/filter_reducer/actions';
 import filterReducer from '../../logic/filter_reducer/filterReducer';
 import BreadCrum from './MainContentHeader/BreadCrum';
 import MainContent from './MainContentHeader/MainContent';
@@ -139,7 +136,7 @@ function Main() {
       .then((data) => {
         data.page = 1;
         data.url = url;
-        dispatchFilter(filterAction(data));
+        dispatchFilter(initDataAction(data));
       });
   }, [checkedItems]);
   useEffect(() => {

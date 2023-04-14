@@ -50,6 +50,7 @@ function MainSidebarGroup({ attributeItem, onClick, categoryOrder }) {
 
           return (
             <div
+              style={{ order: e.displayOrder }}
               key={i}
               className={itemCheckedCssClass}
               data-id={i}
