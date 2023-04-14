@@ -5,7 +5,6 @@ import {
   useState,
   useEffect,
   useCallback,
-  useRef,
   useMemo,
 } from "react";
 import { ADMIN_SETTINGS } from "../../config/adminSettings";
@@ -18,6 +17,7 @@ import MainSidebar from "./MainSideBar/MainSidebar";
 import MainSlider from "./MainContentHeader/MainSlider";
 import { checkedItemsParse } from "../../logic/checkItemsParse";
 import { DOMAIN } from "../../config/globalConfigs";
+import PageLoading from "../PageLoading";
 
 export const FilterContext = createContext(null);
 export const FilterDispatchContext = createContext(null);
@@ -180,7 +180,7 @@ function Main() {
       </FilterContext.Provider>
     );
 
-  return <></>;
+  return <PageLoading />;
 }
 
 export default Main = memo(Main);
