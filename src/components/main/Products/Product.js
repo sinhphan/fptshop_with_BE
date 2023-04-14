@@ -1,18 +1,24 @@
-import { memo } from "react"
+import { memo } from 'react';
 
-import { IMG_URL } from "../../../config/globalConfigs"
-import { vndConvert } from "../../../logic/global"
-import ProductPromotion from "./ProductPromotion"
+import { IMG_URL } from '../../../config/globalConfigs';
+import { vndConvert } from '../../../logic/global';
+import ProductPromotion from './ProductPromotion';
 
-function Product({ product, attrs, promotionItems, isGridDisplay }) {
-  const progress = product.productVariant.price * 100 / product.productVariant.priceMarket
+function Product({ product, isGridDisplay }) {
+  const progress =
+    (product.productVariant.price * 100) / product.productVariant.priceMarket;
 
-  let gridCss = isGridDisplay ? 'l-4 relative c-6' : 'l-12 flex'
-  let productCss = isGridDisplay ? "product grid l-12 flex" : "product list l-12 flex"
-  let productImgCss = isGridDisplay ? "product-img flex" : "product-img flex l-4"
-  let productPriceCss = isGridDisplay ? "product-price" : "product-price l-4"
-  let productShowPromoCss = isGridDisplay ? "product-show-promo flex js-between" : "product-show-promo "
-
+  let gridCss = isGridDisplay ? 'l-4 relative c-6' : 'l-12 flex';
+  let productCss = isGridDisplay
+    ? 'product grid l-12 flex'
+    : 'product list l-12 flex';
+  let productImgCss = isGridDisplay
+    ? 'product-img flex'
+    : 'product-img flex l-4';
+  let productPriceCss = isGridDisplay ? 'product-price' : 'product-price l-4';
+  let productShowPromoCss = isGridDisplay
+    ? 'product-show-promo flex js-between'
+    : 'product-show-promo ';
   return (
     <div className={gridCss}>
       <div className={productCss}>
@@ -20,26 +26,23 @@ function Product({ product, attrs, promotionItems, isGridDisplay }) {
           <a href="#">
             <img src={`${IMG_URL}${product.urlPicture}`} />
           </a>
-          {isGridDisplay && <ProductSaleBag product={product} isGridDisplay={isGridDisplay} />}
+          {isGridDisplay && (
+            <ProductSaleBag product={product} isGridDisplay={isGridDisplay} />
+          )}
         </div>
 
         <div className={productPriceCss}>
-
-          {!isGridDisplay && <ProductSaleBag product={product} isGridDisplay={isGridDisplay} />}
+          {!isGridDisplay && (
+            <ProductSaleBag product={product} isGridDisplay={isGridDisplay} />
+          )}
 
           <h3>
-            <a href="#">
-              {product.name}
-            </a>
+            <a href="#">{product.name}</a>
           </h3>
           <div className={productShowPromoCss}>
-            <div className="progress-bar" >
+            <div className="progress-bar">
               {vndConvert(product.productVariant.price)} ₫
-              <div
-                className="progress"
-                style={{ width: `${progress}%` }}
-              >
-              </div>
+              <div className="progress" style={{ width: `${progress}%` }}></div>
             </div>
 
             <div className="strike-price">
@@ -51,41 +54,48 @@ function Product({ product, attrs, promotionItems, isGridDisplay }) {
           </div>
 
           <div className="product-info">
-            <div className="product-parameter flex" >
-              {attrs.map(
-                (attr, i) =>
-                  <span
-                    key={i}
-                  >
-                    <i className={attr.cssClass} ></i>
-                    {attr.specName}
-                  </span>
-              )}
+            <div className="product-parameter flex">
+              {product.attributeSpecItems.map((attr, i) => (
+                <span key={i}>
+                  <i className={attr.cssClass}></i>
+                  {attr.specName}
+                </span>
+              ))}
             </div>
           </div>
         </div>
 
-        <ProductPromotion promotions={promotionItems} isGridDisplay={isGridDisplay} />
+        <ProductPromotion
+          promotions={product.promotionItems}
+          isGridDisplay={isGridDisplay}
+        />
 
         <div className="product-btn">
-          <a href="#" className="btn product-btn-buy btn-primary"> Mua Ngay</a>
-          <a href="#" className="btn product-btn-compare"> So Sánh</a>
+          <a href="#" className="btn product-btn-buy btn-primary">
+            {' '}
+            Mua Ngay
+          </a>
+          <a href="#" className="btn product-btn-compare">
+            {' '}
+            So Sánh
+          </a>
         </div>
       </div>
-
-    </div >
-  )
+    </div>
+  );
 }
 
-export default Product = memo(Product)
+export default Product = memo(Product);
 
 const ProductSaleBag = memo(({ product, isGridDisplay }) => {
-  let productSaleCss = isGridDisplay ? "product-sale flex only-pc" : "product-sale"
+  let productSaleCss = isGridDisplay
+    ? 'product-sale flex only-pc'
+    : 'product-sale';
 
   return (
     <div className={productSaleCss}>
       <span className="badge badge-warning">{product.labelInst}</span>
       <span className="badge badge-primary">{product.labelFlashSale}</span>
     </div>
-  )
-})
+  );
+});

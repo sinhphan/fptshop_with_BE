@@ -34,25 +34,8 @@ function Products() {
       {totalProductsFiltered !== 0 && (
         <div className="product-list flex">
           {productData.listDefault.list.map((e, id) => {
-            // get list attributes specifie item by product id
-            const attributeSpecItems = productData.attributeSpecItems.filter(
-              (attr) => {
-                return attr.productID === e._id;
-              }
-            );
-
-            const skus = productData.promotionItems.filter(
-              (promotion) => promotion.sku == e.productVariant.sku
-            );
-
             return (
-              <Product
-                product={e}
-                key={id}
-                attrs={attributeSpecItems}
-                promotionItems={skus}
-                isGridDisplay={isGridDisplay}
-              />
+              <Product product={e} key={id} isGridDisplay={isGridDisplay} />
             );
           })}
         </div>

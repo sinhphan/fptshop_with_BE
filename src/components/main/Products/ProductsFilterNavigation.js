@@ -53,7 +53,8 @@ function ProductsFilterNavigation({
 
   const handleChoseFilter = async (e) => {
     let id = +e.currentTarget.dataset.id;
-    const url = `${data.url}${listFilterProps[id].query}=${listFilterProps[id].queryValue}`;
+    const url = `${data.url}&${listFilterProps[id].query}=${listFilterProps[id].queryValue}`;
+    console.log(url);
     setFilterActiveId(id);
     await fetch(url)
       .then((res) => res.json())

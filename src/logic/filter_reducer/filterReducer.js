@@ -26,7 +26,7 @@ function filterReducer(state, action) {
       return payload;
 
     case ACTIONS.ONLINE_OFFER_FILTER_ACTION:
-      return state;
+      return payload;
 
     default:
       break;

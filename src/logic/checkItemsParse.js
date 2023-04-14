@@ -30,7 +30,7 @@ export const checkedItemsParse = (checkedItems) => {
         : filterByGraphicCard(e.searchKey);
 
     if (e.parentName === 'ram')
-      queries.ram = queries.ram ? `${queries.ram}|${e.name}` : e.name;
+      queries.ram = queries.ram ? `${queries.ram}|^${e.name}` : `^${e.name}`;
 
     if (e.parentName === 'o-cung')
       queries.ssd = queries.ssd ? `${queries.ssd}|${e.name}` : e.name;
@@ -43,7 +43,6 @@ export const checkedItemsParse = (checkedItems) => {
   }
   query = query ? query : '';
   let url = `http://localhost:3001/product?${query}`;
-  console.log('checkedItemsParse ---> url:', url);
   return url;
 };
 
@@ -95,16 +94,16 @@ function filterByCPU(key) {
       return 'i7';
 
     case 'amd-ryzen-3':
-      return 'Ryzen';
+      return 'Ryzen 3';
 
     case 'amd-ryzen-5':
-      return 'Ryzen';
+      return 'Ryzen 5';
 
     case 'amd-ryzen-7':
-      return 'Ryzen';
+      return 'Ryzen 7';
 
     case 'amd-ryzen-9':
-      return 'Ryzen';
+      return 'Ryzen 9';
 
     default:
       return '';

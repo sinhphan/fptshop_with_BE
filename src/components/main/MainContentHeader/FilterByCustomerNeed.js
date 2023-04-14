@@ -1,10 +1,10 @@
 import { memo, useContext } from 'react';
 import { IMG_CUSTOMER_NEED_THUMB } from '../../../config/globalConfigs';
 import { FilterContext } from '../Main';
+import { data } from '../../../asset/data';
 
 function FilterByCustomerNeed() {
-  const DATA = useContext(FilterContext);
-  const listFilterByCustomer = DATA.navFilterAttributeItem.specItems.filter(
+  const listFilterByCustomer = data.navFilterAttributeItem.specItems.filter(
     (e) => e.attributeID === 133
   );
 

@@ -132,6 +132,8 @@ function Main() {
 
   useEffect(() => {
     const url = checkedItemsParse(checkedItems);
+    console.log('Main ---> url:', url);
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

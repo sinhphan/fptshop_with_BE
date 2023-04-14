@@ -2,10 +2,10 @@ import { memo, useContext } from 'react';
 
 import { IMG_BRAND_SLIDE_URL } from '../../../config/globalConfigs';
 import { FilterContext } from '../Main';
+import { data } from '../../../asset/data';
 
 function BrandListSlider() {
-  const DATA = useContext(FilterContext);
-  const brandList = DATA.navFilter.listCategory.filter(
+  const brandList = data.navFilter.listCategory.filter(
     (e) => e.parentID === 299
   );
 
